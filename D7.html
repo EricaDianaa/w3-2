@@ -107,12 +107,13 @@
                */
 
       const changePcontent = function () {
-        let changeP = document.querySelector("div p");
-        changeP.innerText = "lorem";
-        console.log(changeP);
+        let changeP = document.querySelectorAll("div p");
+        changeP.forEach((p) => {
+          p.innerText = "lorem";
+          console.log(changeP);
+        });
       };
       changePcontent();
-
       /* ESERCIZIO 4
                 Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
                */
@@ -145,7 +146,7 @@
       const addParagraph = function () {
         let addNewP = document.createElement("p");
         addNewP.innerText = "Questo è un altro paragrafo";
-        let newC = document.querySelector("div:nth-of-type(3)");
+        let newC = document.querySelector("div:nth-of-type(2)");
         newC.appendChild(addNewP);
         console.log(newC);
         console.log(addNewP);
@@ -156,8 +157,8 @@
              */
 
       const hideFirstUl = function () {
-        let deleteP = document.querySelector("ul");
-        deleteP.classList.remove();
+        let deleteP = document.getElementById("firstList");
+        firstList.remove();
         console.log(deleteP);
       };
       hideFirstUl();
@@ -170,9 +171,6 @@
         let colorUl = document.querySelectorAll("ul")[0];
         colorUl.style.backgroundColor = "green";
         console.log(colorUl);
-        let color2 = document.querySelectorAll("ul")[1];
-        color2.style.backgroundColor = "green";
-        console.log(color2);
       };
       paintItGreen();
       /* ESERCIZIO 9
@@ -181,28 +179,24 @@
 
       const makeItClickable = function () {
         let deleteOnClick = document.querySelector("h1");
-        deleteOnClick.forEach((h1) => {
-          h1.style.color = "green";
-        });
+        let deleteP = deleteOnClick.innerText;
+        deleteP = deleteP.slice(0, -1);
+        deleteOnClick.innerText = deleteP;
       };
-      //makeItClickable();
-      // let onClick = document.querySelector("h1");
-      //onClick.forEach((h1) => {
-      //h1.onclick = makeItClickable;
-      //});
+
+      let onClick = document.querySelector("h1");
+      onClick.onclick = makeItClickable;
+
       /* ESERCIZIO 10
                 Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
                */
 
       const revealFooterLink = function () {
-        let newOnClick = document.getElementsByTagName("footer");
-        newOnClick.forEach((h1) => {});
+        alert(
+          "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+        );
       };
-      revealFooterLink();
-      let footerOnClick = document.getElementsByTagName("footer");
-      footerOnClick.forEach((f) => {
-        f.onclick = revealFooterLink;
-      });
+      document.querySelector("footer").onclick = revealFooterLink;
 
       /* ESERCIZIO 11
                 Crea una funzione che crei una tabella nell'elemento con id "tableArea".
